@@ -1,0 +1,31 @@
+.Header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+	justify-content: space-between;
+	padding: 15px 4.03vw 15px 6.6vw;
+
+	color: #ffffff;
+
+	& > svg {
+		cursor: pointer;
+	}
+
+	&__nameMenu {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 28px;
+
+		.menubox {
+			width: 36px;
+			height: 36px;
+			background: #be123c;
+			display: grid;
+			place-items: center;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+	}
+}
