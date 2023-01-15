@@ -1,9 +1,44 @@
 import HomeSection from "../HomeSection";
 import MovieBlock from "../MovieBlock";
 import Carousel from "../Carousel";
+import { fetchPopular } from "../../requests/all";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const FeaturedMovie = () => {
-	const movieList = [
+	const [movieList, setMovieList] = useState([]);
+
+	const genres = useSelector((state: RootState) => state.genres.genres);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await fetchPopular();
+				console.log(res);
+				setMovieList(
+					res.data?.results?.map((item: any) => ({
+						title: item?.title,
+						image: `https://image.tmdb.org/t/p/original${item?.poster_path}`,
+						country: "USA",
+						startYear: new Date(item?.release_date).getFullYear(),
+						// endYear: "Current",
+						imdb: 86.0,
+						rotten: 97,
+						genres: item?.genre_ids.map(
+							(item: any) => genres.find((gItem) => gItem?.id === item)?.name
+						),
+					}))
+				);
+			} catch (e) {
+				console.log(e);
+			}
+		};
+
+		fetchData();
+	}, []);
+
+	const oldMovieList = [
 		{
 			title: "Stranger Things",
 			image: "/images/stranger-things.svg",
