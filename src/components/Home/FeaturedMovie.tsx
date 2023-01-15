@@ -23,8 +23,8 @@ const FeaturedMovie = () => {
 						country: "USA",
 						startYear: new Date(item?.release_date).getFullYear(),
 						// endYear: "Current",
-						imdb: 86.0,
-						rotten: 97,
+						imdb: item?.vote_average * 10,
+						rotten: item?.vote_average * 10,
 						genres: item?.genre_ids.map(
 							(item: any) => genres.find((gItem) => gItem?.id === item)?.name
 						),
@@ -38,54 +38,54 @@ const FeaturedMovie = () => {
 		fetchData();
 	}, []);
 
-	const oldMovieList = [
-		{
-			title: "Stranger Things",
-			image: "/images/stranger-things.svg",
-			country: "USA",
-			startYear: 2016,
-			endYear: "Current",
-			imdb: 86.0,
-			rotten: 97,
-			genres: ["Action", "Adventure", "Horror"],
-		},
-		{
-			title: "Batman Begins",
-			image: "/images/batman.svg",
-			country: "USA",
-			startYear: 2016,
-			imdb: 82.0,
-			rotten: 70,
-			genres: ["Action", "Adventure"],
-		},
-		{
-			title: "Spider-Man : Into The Spider Verse",
-			image: "/images/spiderman.svg",
-			country: "USA",
-			startYear: 2005,
-			imdb: 84.0,
-			rotten: 87,
-			genres: ["Animation", "Action", "Adventure"],
-		},
-		{
-			title: "Dunkirk",
-			image: "/images/dunkirk.svg",
-			country: "USA",
-			startYear: 2018,
-			imdb: 78.0,
-			rotten: 94,
-			genres: ["Action", "Drama", "History"],
-		},
-		{
-			title: "Stranger Things",
-			image: "/images/stranger-things.svg",
-			country: "USA",
-			startYear: 2017,
-			imdb: 86.0,
-			rotten: 97,
-			genres: ["Action", "Adventure", "Horror"],
-		},
-	];
+	// const oldMovieList = [
+	// 	{
+	// 		title: "Stranger Things",
+	// 		image: "/images/stranger-things.svg",
+	// 		country: "USA",
+	// 		startYear: 2016,
+	// 		endYear: "Current",
+	// 		imdb: 86.0,
+	// 		rotten: 97,
+	// 		genres: ["Action", "Adventure", "Horror"],
+	// 	},
+	// 	{
+	// 		title: "Batman Begins",
+	// 		image: "/images/batman.svg",
+	// 		country: "USA",
+	// 		startYear: 2016,
+	// 		imdb: 82.0,
+	// 		rotten: 70,
+	// 		genres: ["Action", "Adventure"],
+	// 	},
+	// 	{
+	// 		title: "Spider-Man : Into The Spider Verse",
+	// 		image: "/images/spiderman.svg",
+	// 		country: "USA",
+	// 		startYear: 2005,
+	// 		imdb: 84.0,
+	// 		rotten: 87,
+	// 		genres: ["Animation", "Action", "Adventure"],
+	// 	},
+	// 	{
+	// 		title: "Dunkirk",
+	// 		image: "/images/dunkirk.svg",
+	// 		country: "USA",
+	// 		startYear: 2018,
+	// 		imdb: 78.0,
+	// 		rotten: 94,
+	// 		genres: ["Action", "Drama", "History"],
+	// 	},
+	// 	{
+	// 		title: "Stranger Things",
+	// 		image: "/images/stranger-things.svg",
+	// 		country: "USA",
+	// 		startYear: 2017,
+	// 		imdb: 86.0,
+	// 		rotten: 97,
+	// 		genres: ["Action", "Adventure", "Horror"],
+	// 	},
+	// ];
 
 	return (
 		<HomeSection title="Featured Movie">

@@ -49,3 +49,15 @@ export const fetchGenres = async () => {
 		throw err;
 	}
 };
+
+export const fetchCast = async () => {
+	try {
+		const res = await request.get(`person/popular?api_key=${APIKey}`);
+		console.log(res);
+		return res;
+	} catch (err) {
+		console.log(err?.response?.data);
+		console.log(err?.response?.data?.message);
+		throw err;
+	}
+};
