@@ -1,10 +1,12 @@
 import Header from "../components/Header";
+import AuthPage from "../components/AuthPage";
+import AuthCard from "../components/AuthCard";
 
 const Login = () => {
 	return (
-		<main>
-			<Header />
-		</main>
+		<AuthPage>
+			<AuthCard variant="sign-in" />
+		</AuthPage>
 	);
 };
 

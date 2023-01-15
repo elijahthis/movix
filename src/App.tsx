@@ -17,7 +17,7 @@ function App() {
 						}
 					/>
 
-					<Route path="/onboarding" element={<Register />} />
+					<Route path="/register" element={<Register />} />
 					<Route path="/login" element={<Login />} />
 				</Routes>
 			</BrowserRouter>

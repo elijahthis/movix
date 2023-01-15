@@ -1,0 +1,47 @@
+.ChakraInput {
+	&__input {
+		font-family: "Work Sans";
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 19px;
+		color: #111827;
+		border: 1px solid rgba(76, 78, 100, 0.22);
+		border-radius: 8px;
+
+		width: 100%;
+
+		padding: 1rem;
+		padding-left: 17px;
+		padding-right: 0.75rem;
+
+		&::placeholder {
+			color: rgba(76, 78, 100, 0.38);
+		}
+	}
+
+	&__passEye {
+		display: none !important;
+		top: 50% !important;
+		transform: translateY(-50%);
+		cursor: pointer;
+		margin-right: 13px;
+
+		button {
+			background-color: transparent;
+			border: 0;
+			cursor: pointer;
+
+			svg {
+				color: rgba(76, 78, 100, 0.54);
+				width: 18px;
+				height: 18px;
+			}
+		}
+	}
+
+	&--password {
+		.ChakraInput__passEye {
+			display: flex !important;
+		}
+	}
+}

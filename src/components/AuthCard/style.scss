@@ -1,0 +1,61 @@
+.AuthCard {
+	width: 450px;
+	background: #ffffff;
+	margin-top: 31px;
+
+	/* robert-black 6% */
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	border-radius: 10px;
+	padding: 48px 28px 36px;
+	text-align: center;
+
+	&__icon {
+		margin-bottom: 31.33px;
+	}
+
+	&__welcome {
+		margin-bottom: 1.5rem;
+		h4 {
+			font-weight: 700;
+			font-size: 18px;
+			line-height: 23px;
+			color: #000000;
+		}
+		p {
+			font-family: "Work Sans";
+			font-style: normal;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 18px;
+			color: #747474;
+		}
+	}
+
+	&__inputs {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	&__otherAction {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 18px;
+		color: #747474;
+		padding: 10px;
+		margin-top: 2rem;
+
+		a {
+			color: #b91c1c;
+			text-decoration: none;
+		}
+	}
+}
