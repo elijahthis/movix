@@ -1,3 +1,5 @@
+import "./style.scss";
+
 interface ButtonProps {
 	variant: "auth" | "watch";
 	children: JSX.Element | string;

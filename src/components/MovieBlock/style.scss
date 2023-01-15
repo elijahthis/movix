@@ -1,0 +1,38 @@
+.MovieBlock {
+	width: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0.75rem;
+
+	&__countryTime {
+		font-weight: 700;
+		font-size: 12px;
+		line-height: 16px;
+		color: #9ca3af;
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 18px;
+		line-height: 23px;
+		color: #111827;
+	}
+
+	&__ratings {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+
+		span {
+			color: #111827;
+		}
+	}
+
+	&__genres {
+		line-height: 16px;
+		color: #9ca3af;
+		font-weight: 700;
+	}
+}

@@ -1,1 +1,18 @@
-s
+.Button {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+	border: 0;
+	cursor: pointer;
+
+	&--watch {
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 24px;
+		color: #ffffff;
+		background: #be123c;
+		border-radius: 6px;
+		padding: 6px 16px;
+	}
+}

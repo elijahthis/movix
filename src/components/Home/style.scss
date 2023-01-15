@@ -1,7 +1,31 @@
 .Hero {
-	height: 100vh;
-	background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+	height: 600px;
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
 		url(../../assets/images/heroImg.svg);
 	background-repeat: no-repeat;
 	background-size: cover;
+	color: #ffffff;
+
+	&__crux {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+		max-width: 404px;
+		margin: 78px 4.03vw 78px 6.6vw;
+
+		.ratings {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 34px;
+		}
+
+		.desc {
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 18px;
+			max-width: 302px;
+		}
+	}
 }

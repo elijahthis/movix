@@ -1,0 +1,23 @@
+.alice-carousel__stage {
+	// display: flex;
+	// flex-direction: row;
+	// justify-content: space-between;
+}
+
+.alice-carousel__stage-item {
+	width: 250px !important;
+	margin-right: 56px;
+	margin-left: 56px;
+	// display: inline-flex;
+	// justify-content: flex-end;
+}
+
+.alice-carousel__stage-item:first-of-type {
+	margin-right: 56px;
+	margin-left: 0;
+}
+
+.alice-carousel__stage-item:last-of-type {
+	margin-right: 0;
+	margin-left: 56px;
+}
