@@ -3,14 +3,66 @@ import "./style.scss";
 import { AuthIcon } from "../svgs";
 import ChakraInput from "../ChakraInput";
 import Button from "../Button";
+import app, { auth } from "../../base";
+import {
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
+	updateProfile,
+	User,
+} from "firebase/auth";
+import { toast } from "react-toastify";
 
 interface AuthCardProps {
 	variant: "sign-in" | "sign-up";
 }
 
 const AuthCard = ({ variant }: AuthCardProps) => {
+	const [loginData, setLoginData] = useState({ email: "", password: "" });
+	const [signupData, setSignupData] = useState({
+		fullName: "",
+		email: "",
+		password: "",
+	});
+
+	const registerFunc = async () => {
+		try {
+			const user = await createUserWithEmailAndPassword(
+				auth,
+				signupData.email,
+				signupData.password
+			);
+			const update = await updateProfile(auth.currentUser as User, {
+				displayName: signupData.fullName,
+			});
+			console.log(user);
+		} catch (e: any) {
+			console.log(e);
+			toast.error(e?.message);
+		}
+	};
+
+	const loginFunc = async () => {
+		try {
+			const user = await signInWithEmailAndPassword(
+				auth,
+				loginData.email,
+				loginData.password
+			);
+			console.log(user);
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
 	return (
-		<div className="AuthCard">
+		<form
+			className="AuthCard"
+			onSubmit={(e) => {
+				e.preventDefault();
+				if (variant === "sign-up") registerFunc();
+				else registerFunc();
+			}}
+		>
 			<div className="AuthCard__icon">
 				<AuthIcon />
 			</div>
@@ -25,18 +77,58 @@ const AuthCard = ({ variant }: AuthCardProps) => {
 			<div className="AuthCard__inputs">
 				{variant === "sign-in" ? (
 					<>
-						<ChakraInput type="email" placeholder="Email" />
-						<ChakraInput type="password" placeholder="Password" />
+						<ChakraInput
+							type="email"
+							placeholder="Email"
+							name="email"
+							onChange={(e: any) =>
+								setLoginData({ ...loginData, email: e?.target?.value })
+							}
+							required={true}
+						/>
+						<ChakraInput
+							type="password"
+							placeholder="Password"
+							name="password"
+							onChange={(e: any) =>
+								setLoginData({ ...loginData, password: e?.target?.value })
+							}
+							required={true}
+						/>
 					</>
 				) : (
 					<>
-						<ChakraInput type="text" placeholder="Full Name" />
-						<ChakraInput type="email" placeholder="test@test.com" />
-						<ChakraInput type="password" placeholder="Password" />
+						<ChakraInput
+							type="text"
+							placeholder="Full Name"
+							name="fullName"
+							onChange={(e: any) =>
+								setSignupData({ ...signupData, fullName: e?.target?.value })
+							}
+							required={true}
+						/>
+						<ChakraInput
+							type="email"
+							placeholder="test@test.com"
+							name="email"
+							onChange={(e: any) =>
+								setSignupData({ ...signupData, email: e?.target?.value })
+							}
+							required={true}
+						/>
+						<ChakraInput
+							type="password"
+							placeholder="Password"
+							name="password"
+							onChange={(e: any) =>
+								setSignupData({ ...signupData, password: e?.target?.value })
+							}
+							required={true}
+						/>
 					</>
 				)}
 			</div>
-			<Button variant="auth">
+			<Button variant="auth" type="submit">
 				{variant === "sign-in" ? "LOGIN" : "REGISTER"}
 			</Button>
 			<p className="AuthCard__otherAction">
@@ -49,7 +141,7 @@ const AuthCard = ({ variant }: AuthCardProps) => {
 					{variant === "sign-in" ? "Register" : "Login"}
 				</a>
 			</p>
-		</div>
+		</form>
 	);
 };
 

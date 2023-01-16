@@ -12,9 +12,19 @@ import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 interface ChakraInputProps {
 	type: string;
 	placeholder: string;
+	name: string;
+	required?: boolean;
+	onChange: (e: any) => void;
 }
 
-const ChakraInput = ({ type, placeholder, ...rest }: ChakraInputProps) => {
+const ChakraInput = ({
+	type,
+	placeholder,
+	name,
+	onChange,
+	required = false,
+	...rest
+}: ChakraInputProps) => {
 	const [showPassword, setShowPassword] = useState(false);
 	const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -24,6 +34,9 @@ const ChakraInput = ({ type, placeholder, ...rest }: ChakraInputProps) => {
 				className={`ChakraInput__input ChakraInput__input`}
 				type={showPassword ? "text" : type}
 				placeholder={placeholder}
+				name={name}
+				required={required}
+				onChange={onChange}
 				// {...rest}
 			/>
 			<InputRightElement className={`ChakraInput__passEye`}>
