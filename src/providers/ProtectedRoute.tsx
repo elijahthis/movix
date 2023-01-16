@@ -4,18 +4,14 @@ import { RootState } from "../redux/store";
 import React from "react";
 
 interface ProtectedRouteProps {
-	component: React.ReactNode | null;
+	children: JSX.Element | null;
 	alternateRoute: string;
 }
 
-const ProtectedRoute = ({ component, alternateRoute }: ProtectedRouteProps) => {
+const ProtectedRoute = ({ children, alternateRoute }: ProtectedRouteProps) => {
 	const user = useSelector((state: RootState) => state.user.user);
-	return (
-		<Route
-			path="/"
-			element={user ? { component } : <Navigate to={alternateRoute} />}
-		/>
-	);
+
+	return user ? children : <Navigate to={alternateRoute} />;
 };
 
 export default ProtectedRoute;

@@ -10,8 +10,6 @@ import { RootState } from "../../redux/store";
 const FeaturedCasts = () => {
 	const [movieList, setMovieList] = useState([]);
 
-	const genres = useSelector((state: RootState) => state.genres.genres);
-
 	useEffect(() => {
 		const fetchData = async () => {
 			try {

@@ -3,20 +3,16 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Login, Register, Home } from "./pages";
 import { fetchGenres } from "./requests/all";
-import { RootState } from "./redux/store";
-import { useSelector, useDispatch } from "react-redux";
-import { SETGENRES } from "./redux/slices/genresSlice";
 import { Provider } from "react-redux";
 import AuthProvider from "./providers/AuthProvider";
 import { store } from "./redux/store";
+import ProtectedRoute from "./providers/ProtectedRoute";
 
 //react-toastify...for notifications
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-	const user = useSelector((state: RootState) => state.user.user);
-
 	return (
 		<Provider store={store}>
 			<AuthProvider>
@@ -25,7 +21,11 @@ function App() {
 						<Routes>
 							<Route
 								path="/"
-								element={user ? <Home /> : <Navigate to={"/login"} />}
+								element={
+									<ProtectedRoute alternateRoute="/login">
+										<Home />
+									</ProtectedRoute>
+								}
 							/>
 
 							<Route path="/register" element={<Register />} />

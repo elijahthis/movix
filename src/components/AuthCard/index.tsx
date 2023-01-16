@@ -11,6 +11,7 @@ import {
 	User,
 } from "firebase/auth";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 interface AuthCardProps {
 	variant: "sign-in" | "sign-up";
@@ -23,8 +24,12 @@ const AuthCard = ({ variant }: AuthCardProps) => {
 		email: "",
 		password: "",
 	});
+	const [loading, setLoading] = useState(false);
+
+	const navigate = useNavigate();
 
 	const registerFunc = async () => {
+		setLoading(true);
 		try {
 			const user = await createUserWithEmailAndPassword(
 				auth,
@@ -35,13 +40,17 @@ const AuthCard = ({ variant }: AuthCardProps) => {
 				displayName: signupData.fullName,
 			});
 			console.log(user);
+			if (user) navigate("/");
 		} catch (e: any) {
 			console.log(e);
 			toast.error(e?.message);
+		} finally {
+			setLoading(false);
 		}
 	};
 
 	const loginFunc = async () => {
+		setLoading(true);
 		try {
 			const user = await signInWithEmailAndPassword(
 				auth,
@@ -49,8 +58,11 @@ const AuthCard = ({ variant }: AuthCardProps) => {
 				loginData.password
 			);
 			console.log(user);
+			if (user) navigate("/");
 		} catch (e) {
 			console.log(e);
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -60,7 +72,7 @@ const AuthCard = ({ variant }: AuthCardProps) => {
 			onSubmit={(e) => {
 				e.preventDefault();
 				if (variant === "sign-up") registerFunc();
-				else registerFunc();
+				else loginFunc();
 			}}
 		>
 			<div className="AuthCard__icon">
@@ -128,9 +140,10 @@ const AuthCard = ({ variant }: AuthCardProps) => {
 					</>
 				)}
 			</div>
-			<Button variant="auth" type="submit">
+			<Button variant="auth" type="submit" loading={loading}>
 				{variant === "sign-in" ? "LOGIN" : "REGISTER"}
 			</Button>
+
 			<p className="AuthCard__otherAction">
 				<span>
 					{variant === "sign-in"
