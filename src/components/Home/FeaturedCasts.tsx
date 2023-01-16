@@ -8,14 +8,14 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
 const FeaturedCasts = () => {
-	const [movieList, setMovieList] = useState([]);
+	const [castList, setCastList] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const res = await fetchCast();
 				console.log(res);
-				setMovieList(
+				setCastList(
 					res.data?.results?.map((item: any) => ({
 						name: item?.name,
 						image: `https://image.tmdb.org/t/p/original${item?.profile_path}`,
@@ -32,7 +32,7 @@ const FeaturedCasts = () => {
 	return (
 		<HomeSection title="Featured Casts">
 			<Carousel>
-				{movieList.map((item, ind) => (
+				{castList.map((item, ind) => (
 					<ActBlock movieInfo={item} key={ind} />
 				))}
 			</Carousel>

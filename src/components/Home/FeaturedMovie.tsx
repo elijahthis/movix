@@ -1,7 +1,7 @@
 import HomeSection from "../HomeSection";
 import MovieBlock from "../MovieBlock";
 import Carousel from "../Carousel";
-import { fetchPopular } from "../../requests/all";
+import { fetchTrending } from "../../requests/all";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -14,15 +14,15 @@ const FeaturedMovie = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const res = await fetchPopular();
+				const res = await fetchTrending();
 				console.log(res);
 				setMovieList(
 					res.data?.results?.map((item: any) => ({
 						title: item?.title,
 						image: `https://image.tmdb.org/t/p/original${item?.poster_path}`,
 						country: "USA",
-						startYear: new Date(item?.release_date).getFullYear(),
-						// endYear: "Current",
+						startYear: new Date(item?.first_air_date).getFullYear(),
+						endYear: "Current",
 						imdb: item?.vote_average * 10,
 						rotten: item?.vote_average * 10,
 						genres: item?.genre_ids.map(

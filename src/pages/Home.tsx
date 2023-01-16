@@ -2,6 +2,7 @@ import Hero from "../components/Home/Hero";
 import FeaturedMovie from "../components/Home/FeaturedMovie";
 import NewArrival from "../components/Home/NewArrival";
 import FeaturedCasts from "../components/Home/FeaturedCasts";
+import ExclusiveVideos from "../components/Home/ExclusiveVideos";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
@@ -32,6 +33,7 @@ const Home = () => {
 			<Hero />
 			<FeaturedMovie />
 			<NewArrival />
+			<ExclusiveVideos />
 			<FeaturedCasts />
 		</main>
 	);

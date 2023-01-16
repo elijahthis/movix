@@ -2,9 +2,9 @@ import { request } from "../utils/axios";
 import { toast } from "react-toastify";
 import { APIKey } from "../config/env";
 
-export const fetchTopRated = async () => {
+export const fetchTrending = async () => {
 	try {
-		const res = await request.get(`movie/top_rated?api_key=${APIKey}`);
+		const res = await request.get(`trending/tv/day?api_key=${APIKey}`);
 		console.log(res);
 		return res;
 	} catch (err) {
@@ -53,6 +53,18 @@ export const fetchGenres = async () => {
 export const fetchCast = async () => {
 	try {
 		const res = await request.get(`person/popular?api_key=${APIKey}`);
+		console.log(res);
+		return res;
+	} catch (err) {
+		console.log(err?.response?.data);
+		console.log(err?.response?.data?.message);
+		throw err;
+	}
+};
+
+export const fetchTrailers = async (movie_id) => {
+	try {
+		const res = await request.get(`movie/${movie_id}/videos?api_key=${APIKey}`);
 		console.log(res);
 		return res;
 	} catch (err) {

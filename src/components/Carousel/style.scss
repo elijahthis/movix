@@ -1,23 +1,44 @@
 .alice-carousel__stage {
-	// display: flex;
-	// flex-direction: row;
-	// justify-content: space-between;
+
 }
 
 .alice-carousel__stage-item {
-	width: 250px !important;
-	margin-right: 56px;
-	margin-left: 56px;
-	// display: inline-flex;
-	// justify-content: flex-end;
+	// width: 250px !important;
+	// margin-right: 56px;
+	// margin-left: 56px;
+
 }
 
 .alice-carousel__stage-item:first-of-type {
-	margin-right: 56px;
-	margin-left: 0;
+	// margin-right: 56px;
+	// margin-left: 0;
 }
 
 .alice-carousel__stage-item:nth-last-of-type(2) {
-	margin-right: 56px;
-	margin-left: 56px;
+	// margin-right: 56px;
+	// margin-left: 56px;
+}
+
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+	width: unset;
+	position: absolute;
+	top: 35%;
+	transform: translateY(-50%);
+
+	&-wrapper {
+		.alice-carousel__prev-btn-item,
+		.alice-carousel__next-btn-item {
+			font-size: 50px;
+			cursor: pointer;
+		}
+	}
+}
+
+.alice-carousel__prev-btn {
+	left: -50px;
+}
+
+.alice-carousel__next-btn {
+	right: -50px;
 }

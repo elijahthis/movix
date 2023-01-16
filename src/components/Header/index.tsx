@@ -4,9 +4,15 @@ import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import "./style.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import MenuDrawer from "../MenuDrawer";
+import { useState, useRef } from "react";
+import { useDisclosure } from "@chakra-ui/react";
 
 const Header = () => {
 	const user = useSelector((state: RootState) => state.user.user);
+	const btnRef = useRef(null);
+
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	return (
 		<header className="Header">
@@ -14,9 +20,10 @@ const Header = () => {
 			<SearchBar />
 			<div className="Header__nameMenu">
 				<p>Hi, {user?.displayName}</p>
-				<div className="menubox">
+				<button className="menubox" ref={btnRef} onClick={onOpen}>
 					<HiOutlineMenuAlt4 />
-				</div>
+				</button>
+				{/* <MenuDrawer isOpen={isOpen} onClose={onClose} btnRef={btnRef} /> */}
 			</div>
 		</header>
 	);
